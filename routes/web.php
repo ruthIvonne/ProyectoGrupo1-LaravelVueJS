@@ -7,4 +7,4 @@ Route::get('/', function () {
 });
 
 Route::get('/crearUsuario',[App\Http\Controllers\UsersController::class,'create'])->name('crearUsuario');
-Route::get('/store',[App\Http\Controllers\UsersController::class,'store'])->name('storeUsuario');
+Route::post('/store',[App\Http\Controllers\UsersController::class,'store'])->name('storeUsuario');

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UsuarioFormRequest;
+
 
 class usersController extends Controller
 {
@@ -26,9 +29,9 @@ class usersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioFormRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -50,7 +53,7 @@ class usersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UsuarioFormRequest $request, string $id)
     {
         //
     }
