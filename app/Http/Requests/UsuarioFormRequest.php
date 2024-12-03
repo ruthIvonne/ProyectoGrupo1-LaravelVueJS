@@ -23,6 +23,7 @@ class UsuarioFormRequest extends FormRequest
     {
         return [
             //acá se crean las reglas de lo que se va a validar
+            'name' => 'required',
         ];
     }
 
@@ -30,7 +31,7 @@ class UsuarioFormRequest extends FormRequest
         return [
             /*Acá se crean los mensajes que va a devolver en caso de errores para cada campo que se validó. Ejemplo:
             'descripcion.required'  =>  'La :attribute es requerida' */
-        
+            'name.required'     =>  'El :attribute es requerido',
         ];
     }
 
@@ -38,6 +39,7 @@ class UsuarioFormRequest extends FormRequest
         return [
             /*acá se crean los nombres específicos de los atributos. Ejemplo:
             'descripcion'   =>  'Descripcion' */
+            'name'              =>  'Nombre',
         ];
     }
 }

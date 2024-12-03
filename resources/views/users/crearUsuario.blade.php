@@ -1,8 +1,8 @@
 <h1> Crear Usuario </h1>
 <form action="{{ route('storeUsuario') }}" method="post">
     @csrf
-    <label for="descripcion">Descripcion</label>
-    <input type="text" name="descripcion" id="descripcion" value="{{ old('descripcion') }}">
+    <label for="name">Nombre</label>
+    <input type="text" name="name" id="name" value="{{ old('name') }}">
     <br>
     <button type="submit">Enviar Formulario</button>
 </form>

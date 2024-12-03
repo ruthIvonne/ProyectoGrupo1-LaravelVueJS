@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UsuarioFormRequest;
+Use Exception;
 
 
 class usersController extends Controller
@@ -31,7 +34,18 @@ class usersController extends Controller
      */
     public function store(UsuarioFormRequest $request)
     {
-        
+        try{
+            DB::beginTransaction();
+            $userValidacion = User::create([
+                'name'  =>  $request->name,
+            ]);
+            if($userValidacion){
+                DB::commit();
+                return redirect('/'); 
+            };
+        } catch (\Exception $e) {
+            DB::rollBack();
+        };
     }
 
     /**
