@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
 
         // Llamar al seeder de roles y permisos
        // $this->call(RoleAndPermissionSeeder::class);
-        // Llamar al seeder de clientes (opcional)
-        //$this->call(UserClientSeeder::class);
+        // Llamar al seeder de cursos 
+        //$this->call(CursosSeeder::class);
     }
 }
 
