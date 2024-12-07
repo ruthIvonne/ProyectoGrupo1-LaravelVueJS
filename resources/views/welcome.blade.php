@@ -60,15 +60,27 @@
 
                     <main class="mt-6">
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                        @if (Route::has('login'))    
-                                    <h1>
-                                    @auth
-                                    <a href="{{ route('users.create') }}">CREAR USUARIO</a>
-                                    <br />
-                                    <a href="{{ route('users.create') }}">CREAR CURSOS</a>
-                                    @endauth
-                                    </h1>
-                                @endif
+                        @if (Route::has('login'))
+                            <div class="container text-center">
+                                <h1>Bienvenido</h1>
+                                @auth
+                                    <div class="mt-3">
+                                        <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Crear Usuario</a>
+                                        <br />
+                                        <a href="{{ route('users.index') }}" class="btn btn-primary mb-2">Ver Todos los Usuarios</a>
+                                        <br />
+                                        <a href="{{ route('users.search') }}" class="btn btn-primary mb-2">Buscar Usuario</a> <!-- Cambiado -->
+                                        <br />
+                                        <a href="{{ route('users.search') }}" class="btn btn-primary mb-2">Editar Usuario</a> <!-- Cambiado -->
+                                        <br />
+                                        <a href="{{ route('users.search') }}" class="btn btn-primary mb-2">Eliminar Usuario</a> <!-- Cambiado -->
+                                        <br />
+                                    </div>
+                                @else
+                                    <p>Por favor, <a href="{{ route('login') }}">inicia sesión</a> para acceder a las opciones.</p>
+                                @endauth
+                            </div>
+                        @endif
 
 
                 

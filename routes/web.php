@@ -25,6 +25,7 @@ Route::group([
     Route::get('/crearUsuario',[UsersController::class,'create'])->name('users.create'); // Ruta para ver el formulario
     Route::post('/crearUsuario',[UsersController::class,'store'])->name('users.store'); // Ruta para procesar el formulario
     Route::get('/', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index'); // Ruta para ver el index
+    Route::get('/search', [UsersController::class, 'search'])->name('users.search');
     Route::get('/show/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.show'); // Ruta para ver el index por {id} para actualizar
     Route::get('/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit'); // Ruta para ver el formulario para actualizar por {id}
     Route::put('/update/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update'); // Ruta para actualizar el formulario
