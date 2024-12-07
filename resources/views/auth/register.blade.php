@@ -57,8 +57,6 @@
                         <label for="rol" class="form-label">Rol</label>
                         <select class="form-select" id="rol" name="rol">
                             <option value="alumno" selected>Alumno</option>
-                            <!-- <option value="docente">Docente</option>
-                            <option value="administrador">Administrador</option> -->
                         </select>
                     </div>
 

@@ -37,7 +37,7 @@ namespace App\Http\Controllers;
                 'name' => $data['name'],
                 'apellido' => $data['apellido'],
                 'email' => $data['email'],
-                'password' => Hash::make($data['password']), // Asegúrate de que la contraseña esté cifrada
+                'password' => ($data['password']), // Asegúrate de que la contraseña esté cifrada
                 'biografia' => $data['biografia'],
                 'rol' => $data['rol'] ?? 'alumno', // Asignación de rol por defecto
                 'foto_perfil' => $data['foto_perfil'] ?? null, // Foto de perfil opcional
@@ -84,5 +84,10 @@ namespace App\Http\Controllers;
         public function destroy(string $id)
         {
             //
+        }
+
+        public function create()
+        {
+          return view('users.crearUsuario');
         }
     }
