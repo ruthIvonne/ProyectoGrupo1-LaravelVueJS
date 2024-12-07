@@ -46,8 +46,14 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        // Eliminar las claves foráneas antes de eliminar las tablas que las contienen
+        Schema::table('sessions', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
+        // Eliminar las tablas en el orden correcto
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
     }
 };

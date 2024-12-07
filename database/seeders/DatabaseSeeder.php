@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Categoria; // Importar la clase Categoria
+use App\Models\Curso; // Importar la clase Curso
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,10 +20,15 @@ class DatabaseSeeder extends Seeder
         // Llamar al seeder de usuarios regulares
         \App\Models\User::factory(10)->create();
 
-        // Llamar al seeder de roles y permisos
-       // $this->call(RoleAndPermissionSeeder::class);
-        // Llamar al seeder de cursos 
-        //$this->call(CursosSeeder::class);
+        // Crear 10 categorías de prueba
+        Categoria::factory(10)->create();
+
+        // Crear 10 cursos de prueba, cada uno asociado a una categoría
+        Curso::factory(10)->create();
+
+        // Llamar al seeder de roles y permisos si es necesario
+        // $this->call(RoleAndPermissionSeeder::class);
+        // Llamar al seeder de cursos si es necesario
+        // $this->call(CursosSeeder::class);
     }
 }
-

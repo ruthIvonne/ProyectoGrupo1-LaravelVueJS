@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ROL_DOCENTE = 'docente';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -51,8 +53,23 @@ class User extends Authenticatable
      * @param string $password
      * @return void
      */
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    //  // Método para verificar si es docente
+    //  public function isDocente()
+    //  {
+    //      return $this->rol === self::ROL_DOCENTE;
+    //  }
+
+    //  public function isAdmin() {
+    //     return $this->role === 'admin'; // Cambia 'admin' al rol que uses
+    // }
+
+    // public function isUser() {
+    //     return $this->role === 'user'; // Cambia 'user' al rol que uses
+    // }
 }

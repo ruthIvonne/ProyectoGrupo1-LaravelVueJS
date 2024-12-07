@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\HomeController;
 
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +34,30 @@ Route::group([
     Route::delete('/destroy/{id}', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.destroy'); // Ruta para borrar el registro del usuario
 });
 
+Route::group([
+    'middleware' => ['auth', 'checkadmin'],
+    'prefix' => 'cursos',
+], function () {
+    Route::get('/', [CursoController::class, 'index'])->name('cursos.index'); // Ver todos los cursos
+    Route::get('/crear', [CursoController::class, 'create'])->name('cursos.create'); // Ver formulario de creación
+    Route::post('/crear', [CursoController::class, 'store'])->name('cursos.store'); // Crear curso
+    Route::get('/editar/{id}', [CursoController::class, 'edit'])->name('cursos.edit'); // Ver formulario de edición
+    Route::put('/editar/{id}', [CursoController::class, 'update'])->name('cursos.update'); // Actualizar curso
+    Route::delete('/eliminar/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy'); // Eliminar curso
+});
 
 
-
+Route::group([
+    'middleware' => ['auth', 'checkadmin'],
+    'prefix' => 'categorias'
+], function () {
+    Route::get('/', [CategoriaController::class, 'index'])->name('categorias.index'); // Ver todas las categorías
+    Route::get('/crear', [CategoriaController::class, 'create'])->name('categorias.create'); // Ver formulario de creación
+    Route::post('/crear', [CategoriaController::class, 'store'])->name('categorias.store'); // Crear categoría
+    Route::get('/editar/{id}', [CategoriaController::class, 'edit'])->name('categorias.edit'); // Ver formulario de edición
+    Route::put('/editar/{id}', [CategoriaController::class, 'update'])->name('categorias.update'); // Actualizar categoría
+    Route::delete('/eliminar/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy'); // Eliminar categoría
+});
 
 // Route::group([
 //     'middleware' => ['auth', 'admin'],
@@ -84,17 +107,6 @@ Route::group([
 //     Route::resource('reports', App\Http\Controllers\Student\ReportsController::class);
 //     Route::resource('quizzes', App\Http\Controllers\Student\QuizzesController::class);
 //     Route::resource('quizzes_results', App\Http\Controllers\Student\QuizzesResultsController::class);
-// });
-
-
-//  ----------------------------------------------------------------
-// Route::group([
-//     'prefix' => 'courses',
-//     'namespace' => 'App\Http\Controllers',
-//    'middleware' => ['auth', 'administrador'],
-// ],function(){
-//Route::get('/crearCurso',[App\Http\Controllers\CursosController::class,'create'])->name('crearCurso');
-//Route::post('/store',[App\Http\Controllers\CursosController::class,'store'])->name('storeCurso');
 // });
 
 //  ----------------------------------------------------------------    

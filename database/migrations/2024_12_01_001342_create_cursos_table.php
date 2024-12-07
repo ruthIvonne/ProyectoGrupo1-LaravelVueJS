@@ -24,6 +24,11 @@ return new class extends Migration
             $table->foreign('user_created')->references('id')->on('users');
             $table->unsignedBigInteger('user_updated');
             $table->foreign('user_updated')->references('id')->on('users');
+            // Agregar las claves foráneas de categoria_id y docente_id
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->unsignedBigInteger('docente_id');
+            $table->foreign('docente_id')->references('id')->on('users')->where('rol', 'docente')->onDelete('cascade');
             $table->timestamps();
         });
     }

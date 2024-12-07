@@ -64,7 +64,7 @@
                             <div class="container text-center">
                                 <h1>Bienvenido</h1>
                                 @auth
-                                    <div class="mt-3">
+                                    <div class="mt-3">CRUD DE USUARIOS<br />
                                         <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Crear Usuario</a>
                                         <br />
                                         <a href="{{ route('users.index') }}" class="btn btn-primary mb-2">Ver Todos los Usuarios</a>
@@ -74,6 +74,22 @@
                                         <a href="{{ route('users.search') }}" class="btn btn-primary mb-2">Editar Usuario</a> <!-- Cambiado -->
                                         <br />
                                         <a href="{{ route('users.search') }}" class="btn btn-primary mb-2">Eliminar Usuario</a> <!-- Cambiado -->
+                                        <br />
+                                    </div>
+                                    <div class="mt-3">CRUD DE CATEGORIAS<br />
+                                    <a href="{{ route('categorias.create') }}" class="btn btn-primary mb-2">Crear Categoría</a>
+                                        <br />
+                                        <a href="{{ route('categorias.index') }}" class="btn btn-primary mb-2">Ver Todas las Categorías</a>
+                                        <br />
+                                    </div>
+                                    <div class="mt-3">CRUD DE CURSOS<br />
+                                        <a href="{{ route('cursos.index') }}" class="btn btn-primary mb-2">Ver Todos los Cursos</a>
+                                        <br />
+                                        <a href="{{ route('cursos.create') }}" class="btn btn-primary mb-2">Crear Curso</a>
+                                        <br />
+                                        <a href="{{ route('cursos.edit', ['id' => 1]) }}" class="btn btn-primary mb-2">Editar Curso</a> <!-- Reemplazar 1 por el ID correspondiente -->
+                                        <br />
+                                        <a href="{{ route('cursos.destroy', ['id' => 1]) }}" class="btn btn-danger mb-2">Eliminar Curso</a> <!-- Reemplazar 1 por el ID correspondiente -->
                                         <br />
                                     </div>
                                 @else
