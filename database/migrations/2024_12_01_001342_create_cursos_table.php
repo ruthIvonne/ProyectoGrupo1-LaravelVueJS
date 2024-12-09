@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
+            //esto posiblemente tenga que agregarlo con add comando
+            $table->foreignId('docente_id')->constrained('users');
             $table->string('titulo',100);
             $table->string('institucion',200);
             $table->string('plan_de_estudio',200);

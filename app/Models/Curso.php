@@ -23,4 +23,10 @@ class Curso extends Model
         'created_at',
         'updated_at',
     ];
+    public function docente() {
+        return $this->belongsTo(User::class, 'docente_id');
+    }
+    public function estudiante() {
+        return $this->belongsToMany(User::class, 'inscripciones');
+    }
 }
