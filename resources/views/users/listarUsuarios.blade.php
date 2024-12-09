@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">Listado de Usuarios</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Listar Usuarios') }}</div>
+
+                <div class="card-body">
 
     @if ($users->count())
         <table class="table table-striped">

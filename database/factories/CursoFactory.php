@@ -18,9 +18,9 @@ class CursoFactory extends Factory
     public function definition(): array
 {
     return [
-        'titulo' => $this->faker->sentence, // Utiliza una oración aleatoria para el título del curso
-        'institucion' => $this->faker->company, // Utiliza el nombre de una institución aleatoria
-        'plan_de_estudio' => $this->faker->paragraph, // Utiliza un párrafo aleatorio para el plan de estudio
+        'titulo' => $this->faker->jobTitle, // Utiliza una título aleatorio para el título del curso
+        'institucion' => $this->faker->name, // Utiliza el nombre de una institución aleatoria
+        'plan_de_estudio' => $this->faker->text(350), // Utiliza un párrafo aleatorio para el plan de estudio
         'duracion' => $this->faker->time, // Utiliza una hora aleatoria para la duración
         'certificados' => $this->faker->boolean, // Utiliza un valor booleano aleatorio para certificados
         'precio' => $this->faker->randomFloat(2, 100, 1000), // Utiliza un valor decimal aleatorio para el precio

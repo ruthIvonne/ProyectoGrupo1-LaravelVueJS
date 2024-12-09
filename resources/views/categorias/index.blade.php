@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Categorías</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Crear Categoría') }}</div>
+
+                <div class="card-body">
         <a href="{{ route('categorias.create') }}" class="btn btn-primary mb-2">Crear Categoría</a>
         <table class="table">
             <thead>
@@ -30,4 +35,8 @@
             </tbody>
         </table>
     </div>
+    </div>
+        </div>
+    </div>
+</div>
 @endsection

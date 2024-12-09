@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Editar Curso</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Editar Curso') }}</div>
+
+                <div class="card-body">
         <form action="{{ route('cursos.update', $curso->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -34,10 +39,10 @@
                 @enderror
             </div>
 
-            <!-- Duración (en formato HH:MM:SS) -->
-            <div class="form-group">
+             <!-- Duración (en formato HH:MM:SS) -->
+             <div class="form-group">
                 <label for="duracion">Duración</label>
-                <input type="time" name="duracion" class="form-control @error('duracion') is-invalid @enderror" value="{{ old('duracion', $curso->duracion) }}" placeholder="Ej: 02:30:00" required>
+                <input type="time" name="duracion" class="form-control @error('duracion') is-invalid @enderror" value="{{ old('duracion') }}" placeholder="Ej: 02:30:00">
                 @error('duracion')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -103,5 +108,9 @@
 
             <button type="submit" class="btn btn-primary">Actualizar Curso</button>
         </form>
+        </div>
+            </div>
+        </div>
     </div>
+</div>
 @endsection

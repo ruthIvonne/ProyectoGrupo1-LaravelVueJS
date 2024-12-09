@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $cursos = Curso::all();
@@ -26,21 +31,21 @@ class CursoController extends Controller
 
     public function store(CursoFormRequest $request)
     {
-        // Crear el curso con los datos validados
         $curso = new Curso();
         $curso->titulo = $request->input('titulo');
         $curso->institucion = $request->input('institucion');
         $curso->plan_de_estudio = $request->input('plan_de_estudio');
-        $curso->duracion = $request->input('duracion'); // Almacenar directamente en formato HH:MM:SS
-        $curso->certificados = $request->input('certificados');
+        $curso->duracion = $request->input('duracion'); // Almacenar en formato HH:MM:SS
+        $curso->certificados = $request->boolean('certificados'); // Capturar como booleano
         $curso->precio = $request->input('precio');
         $curso->video_url = $request->input('video_url');
         $curso->categoria_id = $request->input('categoria_id');
         $curso->docente_id = $request->input('docente_id');
+        $curso->user_created = null;
+        $curso->user_updated = null;
         $curso->save();
 
-        // Redirigir o devolver una respuesta
-        return redirect()->route('cursos.index');
+        return redirect()->route('cursos.index')->with('success', 'Curso creado con éxito.');
     }
 
     public function edit($id)
@@ -55,27 +60,26 @@ class CursoController extends Controller
     public function update(CursoFormRequest $request, $id)
     {
         $curso = Curso::findOrFail($id);
-
-        // Actualizar los campos del curso con los datos validados
         $curso->titulo = $request->input('titulo');
         $curso->institucion = $request->input('institucion');
         $curso->plan_de_estudio = $request->input('plan_de_estudio');
-        $curso->duracion = $request->input('duracion');  // Almacenar directamente en formato HH:MM:SS
-        $curso->certificados = $request->input('certificados');
+        $curso->duracion = $request->input('duracion');
+        $curso->certificados = $request->boolean('certificados');
         $curso->precio = $request->input('precio');
         $curso->video_url = $request->input('video_url');
         $curso->categoria_id = $request->input('categoria_id');
         $curso->docente_id = $request->input('docente_id');
+    //    $curso->user_updated = auth()->id() ?? null;
         $curso->save();
 
-        // Redirigir o devolver una respuesta
-        return redirect()->route('cursos.index');
+        return redirect()->route('cursos.index')->with('success', 'Curso actualizado con éxito.');
     }
+
     public function destroy($id)
     {
         $curso = Curso::findOrFail($id);
         $curso->delete();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso eliminado exitosamente');
+        return redirect()->route('cursos.index')->with('success', 'Curso eliminado exitosamente.');
     }
 }

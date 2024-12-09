@@ -1,8 +1,8 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>Copyright &copy; Grupo1-2024 <a href="https://talentosdigitales.ar/">Talentos Digitales - Ctes</a>.</strong>
+    Prof. Maxi Tedesco
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.1-pre
+      <b>LaravelVue.JS</b> 
     </div>
   </footer>

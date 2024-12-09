@@ -15,14 +15,14 @@ class UserAdminSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'apellido' => 'admin',  // Campo 'apellido' agregado
+            'apellido' => 'admin',  
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
-            'password' => 'password123', // Texto plano; el modelo lo hasheará
+            'password' => 'password123', 
             'remember_token' => Str::random(10),
-            'rol' => 'administrador',  // Campo 'rol' agregado
-            'foto_perfil' => null,  // Se puede dejar como null o poner una URL predeterminada
-            'biografia' => 'Una biografía del administrador',  // Campo 'biografia' agregado
+            'rol' => 'administrador',  
+            'foto_perfil' => null,  
+            'biografia' => 'Una biografía del administrador', 
         ]);
     }
 }

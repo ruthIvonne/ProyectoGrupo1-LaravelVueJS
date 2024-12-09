@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Editar Categoría</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Editar Categoría') }}</div>
+
+                <div class="card-body">
         <form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -12,5 +17,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
+        </div>
+            </div>
+        </div>
     </div>
+</div>
 @endsection
