@@ -2,43 +2,74 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
+    const ROL_DOCENTE = 'docente';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'apellido',
         'email',
+        'password', // Asegúrate de incluir 'password' aquí
         'rol',
         'foto_perfil',
         'biografia',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
-        'email_verified_at',
-        'password',
+        'password', // Oculta la contraseña al serializar el modelo
         'remember_token',
-        'created_at',
-        'updated_at',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Mutator to hash the password before saving.
+     *
+     * @param string $password
+     * @return void
+     */
+
+    public function setPasswordAttribute($password)
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        $this->attributes['password'] = Hash::make($password);
     }
+
+     // Relación para cursos asignados (docentes)
+    //  public function cursosAsignados()
+    //  {
+    //      return $this->hasMany(Curso::class, 'docente_id');
+    //  }
+ 
+     // Relación para cursos comprados (alumnos)
+    //  public function cursosComprados()
+    //  {
+    //      return $this->belongsToMany(Curso::class, 'curso_user', 'user_id', 'curso_id')
+    //                  ->withTimestamps();
+    //  }
 }

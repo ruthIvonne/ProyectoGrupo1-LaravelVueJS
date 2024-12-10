@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resenia extends Model
 {
-    Use HasFactory
+    use HasFactory; // Corregido
     protected $table = 'resenia';
     //en este fillable se ponen los campos que serán accesibles al sistema
     protected $fillable = [
