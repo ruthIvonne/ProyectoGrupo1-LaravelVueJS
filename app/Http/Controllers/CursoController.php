@@ -7,6 +7,9 @@ use App\Models\Categoria;
 use App\Models\User;
 use App\Http\Requests\CursoFormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class CursoController extends Controller
 {
@@ -82,4 +85,41 @@ class CursoController extends Controller
 
         return redirect()->route('cursos.index')->with('success', 'Curso eliminado exitosamente.');
     }
+
+    public function asignados(CursoFormRequest $request)
+    {
+        // $user = Auth::user(); 
+        // if (!$user) {
+        //     return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus cursos asignados.');
+        // }
+
+        // Verificar el rol del usuario y filtrar cursos asignados
+        // if ($user->rol === 'docente') {
+        //     $cursos = Curso::where('docente_id', $user->id)->get();
+        // } elseif ($user->rol === 'alumno') {
+        //     $cursos = $user->cursosInscritos; // Relación entre usuarios y cursos
+        // } else {
+        //     return redirect()->route('cursos.index')->with('error', 'No tienes acceso a esta sección.');
+        // }
+        //return redirect()->route('cursos.index')->with('success', 'No tienes acceso a esta sección.');
+        return view('cursos.asignados', compact('cursos'));
+    }
+
+    public function comprados($curso_id)
+    {
+        //$curso = Curso::findOrFail($cursoId);
+
+        // Verificar si el alumno ya compró el curso
+        // if (Auth::user()->cursosComprados->contains($curso)) {
+        //     return redirect()->back()->with('error', 'Ya compraste este curso.');
+        // }
+
+        // Agregar el curso a los cursos comprados del alumno
+        //Auth::user()->cursosComprados()->attach($curso);
+
+        return redirect()->route('cursos.index')->with('success', 'No tienes acceso a esta sección.');
+
+        //return redirect()->route('alumnos.cursos_comprados')->with('success', 'Curso comprado exitosamente.');
+    }
+
 }

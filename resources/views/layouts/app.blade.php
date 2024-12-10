@@ -43,7 +43,13 @@
 
         @include('layouts.navbar')
         @auth
-            @include('layouts.menu')
+            @if(Auth::user()->rol === 'administrador')
+            @include('layouts.menuAdmin')
+            @elseif(Auth::user()->rol === 'docente')
+            @include('layouts.menuDocente')
+            @elseif(Auth::user()->rol === 'alumno')
+            @include('layouts.menuAlumno')
+            @endif
         @endauth
 
         <main >

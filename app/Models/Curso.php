@@ -43,8 +43,15 @@ class Curso extends Model
     }
 
     // Relación con el docente
-    public function docente()
-    {
-        return $this->belongsTo(User::class, 'docente_id');
-    }
+    // public function docente()
+    // {
+    //     return $this->belongsTo(User::class, 'docente_id');
+    // }
+
+    // Relación con los alumnos
+    // public function alumnos()
+    // {
+    //     return $this->belongsToMany(User::class, 'curso_user', 'curso_id', 'user_id')
+    //                 ->withTimestamps();
+    // }
 }

@@ -4,7 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Http\Middleware\CheckAdminRole; // Asegúrate de importar tu middleware
+use App\Http\Middleware\CheckAdminRole;
+use App\Http\Middleware\CheckDocenteRole; 
+use App\Http\Middleware\CheckAlumnoRole; 
+
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,9 @@ class RouteServiceProvider extends ServiceProvider
 
         // Registrar el middleware personalizado 'checkadmin'
         Route::aliasMiddleware('checkadmin', CheckAdminRole::class);
+        Route::aliasMiddleware('checkdocente', CheckDocenteRole::class);
+        Route::aliasMiddleware('checkalumno', CheckAlumnoRole::class);
+
     }
 
     /**

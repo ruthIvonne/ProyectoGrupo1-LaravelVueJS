@@ -24,7 +24,7 @@
       @auth
         <!-- Menú para Administrador -->
         @if(Auth::user()->rol === 'administrador')
-          <li class="nav-item has-treeview">
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -42,7 +42,7 @@
               <li class="nav-item">
                 <a href="{{ route('cursos.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Cursos</p>
+                  <p>Ver Todos los Cursos</p>
                 </a>
               </li>
             </ul>
@@ -89,104 +89,6 @@
                 <a href="{{ route('categorias.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Categorías</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-        <!-- Menú para Docente -->
-        @elseif(Auth::user()->rol === 'docente')
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                PERFIL
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Perfil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editar Perfil</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                CURSOS
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('cursos.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cursos Asignados</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-        <!-- Menú para Alumno -->
-        @elseif(Auth::user()->rol === 'alumno')
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                PERFIL
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Perfil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editar Perfil</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                CURSOS
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('cursos.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Todos los Cursos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('cursos.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buscar Cursos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('cursos.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Cursos Comprados</p>
                 </a>
               </li>
             </ul>

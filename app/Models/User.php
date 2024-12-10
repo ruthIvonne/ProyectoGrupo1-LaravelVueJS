@@ -60,17 +60,16 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($password);
     }
 
-    //  // Método para verificar si es docente
-    //  public function isDocente()
+     // Relación para cursos asignados (docentes)
+    //  public function cursosAsignados()
     //  {
-    //      return $this->rol === self::ROL_DOCENTE;
+    //      return $this->hasMany(Curso::class, 'docente_id');
     //  }
-
-    //  public function isAdmin() {
-    //     return $this->role === 'admin'; // Cambia 'admin' al rol que uses
-    // }
-
-    // public function isUser() {
-    //     return $this->role === 'user'; // Cambia 'user' al rol que uses
-    // }
+ 
+     // Relación para cursos comprados (alumnos)
+    //  public function cursosComprados()
+    //  {
+    //      return $this->belongsToMany(Curso::class, 'curso_user', 'user_id', 'curso_id')
+    //                  ->withTimestamps();
+    //  }
 }

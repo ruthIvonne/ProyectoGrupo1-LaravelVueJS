@@ -11,10 +11,11 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next, string $role): mixed
     {
-        if (auth()->check() && auth()->user()->rol === $role) {
+        // Verifica que el usuario esté autenticado y que su rol coincida
+        if (Auth::check() && strtolower(Auth::user()->rol) === strtolower($role)) {
             return $next($request);
         }
 
-        return redirect()->route('home')->with('error', 'No tienes permiso para acceder a esta página.');
+        return redirect()->route('/home')->with('error', 'No tienes permiso para acceder a esta página.');
     }
 }
