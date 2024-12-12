@@ -60,16 +60,15 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($password);
     }
 
-     // Relación para cursos asignados (docentes)
-    //  public function cursosAsignados()
-    //  {
-    //      return $this->hasMany(Curso::class, 'docente_id');
-    //  }
+    // Relación para cursos asignados (docentes)
+    public function cursosAsignados()
+    {
+       return $this->hasMany(Curso::class, 'docente_id');
+    }
  
      // Relación para cursos comprados (alumnos)
-    //  public function cursosComprados()
-    //  {
-    //      return $this->belongsToMany(Curso::class, 'curso_user', 'user_id', 'curso_id')
-    //                  ->withTimestamps();
-    //  }
+     public function cursosComprados()
+     {
+         return $this->belongsToMany(Curso::class, 'curso_user', 'user_id', 'curso_id');
+     }
 }

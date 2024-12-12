@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
-    public function handle(Request $request, Closure $next, string $role): mixed
+    public function handle(Request $request, Closure $next, ...$roles): mixed
     {
-        // Verifica que el usuario esté autenticado y que su rol coincida
-        if (Auth::check() && strtolower(Auth::user()->rol) === strtolower($role)) {
-            return $next($request);
+        // Verifica que el usuario esté autenticado
+        if (Auth::check()) {
+            // Verifica si el rol del usuario está dentro de los roles permitidos
+            if (in_array(strtolower(Auth::user()->rol), array_map('strtolower', $roles))) {
+                return $next($request);
+            }
         }
 
-        return redirect()->route('/home')->with('error', 'No tienes permiso para acceder a esta página.');
+        return redirect('/home')->with('error', 'No tienes permiso para acceder a esta página.');
     }
 }

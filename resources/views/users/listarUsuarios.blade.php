@@ -32,12 +32,18 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ ucfirst($user->rol) }}</td>
                         <td>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                        @auth
+                        @if(Auth::user()->rol === 'administrador')   
+                            <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
+                        @elseif(Auth::user()->rol === 'docente')
+                        <a href="{{ route('users.index') }}" class="btn btn-warning">Calificar</a>
+                        @endif
+                        @endauth   
                         </td>
                     </tr>
                 @endforeach
@@ -46,14 +52,18 @@
     @else
         <p>No se encontraron usuarios.</p>
     @endif
-
+    @auth
+    @if(Auth::user()->rol === 'administrador') 
     <div class="mt-3">
         <a href="{{ route('users.create') }}" class="btn btn-primary">Crear Nuevo Usuario</a>
     </div>
+    @endif
+    @endauth  
 
     <!-- Enlaces de paginación -->
     <div class="mt-3">
         {{ $users->links() }}
     </div>
+ 
 </div>
 @endsection
