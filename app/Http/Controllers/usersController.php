@@ -14,7 +14,7 @@ namespace App\Http\Controllers;
 
 
 
-    class UsersController extends Controller
+    class usersController extends Controller
     {
         /**
          * Display a listing of the resource.

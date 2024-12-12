@@ -94,3 +94,6 @@ Route::group([
     Route::get('/cursos-alumnos', [CursoController::class, 'index'])->name('cursos.index');
     Route::get('/cursos-comprados', [CursoController::class, 'cursos.comprados'])->name('alumnos.cursos_comprados');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

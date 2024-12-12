@@ -36,11 +36,12 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app" class="wrapper">
 
-
+        
         @include('layouts.navbar')
         @auth
             @if(Auth::user()->rol === 'administrador')
@@ -108,5 +109,10 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<div>
+    <footer class="container">
+        @yield('Footer')
+    </footer>
+</div>
 </body>
 </html>
