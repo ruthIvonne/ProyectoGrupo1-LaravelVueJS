@@ -51,17 +51,20 @@ class RoleAndPermissionSeeder extends Seeder
         
         $permissions = Permission::all();
 
-        $roleAdmin->syncPermissions($permissions);
-        $roleDocente->syncPermissions($permissions);
-        $roleAlumno->syncPermissions($permissions);
+        // $roleAdmin->syncPermissions($permissions);
+        // $roleDocente->syncPermissions($permissions);
+        // $roleAlumno->syncPermissions($permissions);
 
-        $users = User::where('rol', 'administrador')->first();
-        $users->assignRole($roleAdmin);
+        $users = User::all(); 
 
-        $usersDocente = User::where('rol', 'docente')->first();
-        $usersDocente->assignRole($roleDocente);
-
-        $usersAlumno = User::where('rol', 'alumno')->first();
-        $usersAlumno->assignRole($roleAlumno);
+        foreach ($users as $user) {
+            if ($user->rol == 'administrador') {
+                $user->assignRole($roleAdmin); 
+            } elseif ($user->rol == 'docente') {
+                $user->assignRole($roleDocente); 
+            } elseif ($user->rol == 'alumno') {
+                $user->assignRole($roleAlumno);
+            }
+        }
     }
 }

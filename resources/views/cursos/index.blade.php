@@ -8,20 +8,24 @@
                 <div class="card-header">{{ __('Listado de Cursos') }}</div>
 
                 <div class="card-body">
-        <a href="{{ route('cursos.create') }}" class="btn btn-primary">Crear Curso</a>
-
-        <table class="table mt-4">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Institución</th>
-                    <th>Plan de Estudio</th>
-                    <th>Duración</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+        
+                @auth
+                @if(Auth::user()->rol === 'administrador')
+                <a href="{{ route('cursos.create') }}" class="btn btn-primary">Crear Curso</a>
+                @endif
+                @endauth
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Institución</th>
+                            <th>Plan de Estudio</th>
+                            <th>Duración</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                 @foreach ($cursos as $curso)
                     <tr>
                         <td>{{ $curso->titulo }}</td>
@@ -30,17 +34,25 @@
                         <td>{{ $curso->duracion }}</td>
                         <td>{{ $curso->precio }}</td>
                         <td>
+                        @auth
+                        @if(Auth::user()->rol === 'administrador')   
                             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-warning">Editar</a>
                             <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
+                        @elseif(Auth::user()->rol === 'alumno')
+                        <a href="{{ route('cursos.index') }}" class="btn btn-warning">Comprar</a>
+                        @elseif(Auth::user()->rol === 'docente')
+                        <a href="{{ route('users.index') }}" class="btn btn-warning">Alumnos inscriptos</a>
+                        @endif
+                        @endauth    
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
+                    </tbody>
+            </table>
         </div>
             </div>
         </div>

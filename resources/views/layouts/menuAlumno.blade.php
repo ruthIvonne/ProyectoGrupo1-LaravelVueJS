@@ -34,13 +34,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
+                <a href="{{ route('users.show', Auth::id()) }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Perfil</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
+                <a href="{{ route('users.edit', Auth::id()) }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Editar Perfil</p>
                 </a>
@@ -68,10 +68,27 @@
                   <p>Buscar Cursos</p>
                 </a>
               </li>
+             
+              <li class="nav-item">
+                <a href="{{ route('alumnos.cursos_comprados') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Mis Cursos</p>
+                </a>
+              </li>
+              </ul>
+              <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                CARRITO
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('cursos.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Cursos Comprados</p>
+                  <p>Ver Carrito</p>
                 </a>
               </li>
             </ul>

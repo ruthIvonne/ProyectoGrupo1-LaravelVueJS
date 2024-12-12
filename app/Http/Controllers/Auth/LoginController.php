@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Auth;
-use app\Models\User;
-use Session;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -43,41 +42,51 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    public function login(Request $request){
-        $userLocal=null;
-        $credentials = $this->credentials($request);
-
-        if(Auth::validate($credentials)){
-            $user = Auth::getLastAttempted();
-            auth()->login($user);
-            return redirect('home');
-        }else{
-            if(!empty($credentials['name'])){
-                $userLocal = User::where('name', $credentials['name'])->first();
-            }elseif (!empty($credentials['email'])) {
-                $userLocal = User::where('email', $credentials['email'])->first();
-            }
-            if(is_null($userLocal)){
-                Session::flash('flash_message','El usuario es incorrecto');
-                Session::flash('flash_message_class','danger');
-            }else{
-                Session::flash('flash_message','La contraseña es incorrecta');
-                Session::flash('flash_message_class','danger');
-            }
-            return back()->withInput();
-        }
+     /**
+     * Sobrescribir el método authenticated para manejar redirecciones personalizadas.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function authenticated($request, $user)
+    {
+        return redirect()->intended($this->redirectTo);
     }
 
-    public function credentials(Request $request){
-        $login = $request->input($this->username());
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-        return [
-            $field      => $login,
-            'password'  => $request->input('password'),
-        ];
+        /**
+     * Logout the user and redirect to the login page.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 
-    public function username(){
-        return 'login';
-    }
 }
+
+
+//     public function login(Request $request)
+// {
+//     $credentials = $request->only('email', 'password');
+
+//     $user = \App\Models\User::where('email', $request->email)->first();
+//     if (!$user) {
+//         dd('Usuario no encontrado');
+//     }
+
+//     if (!Hash::check($request->password, $user->password)) {
+//         dd('Contraseña incorrecta');
+//     }
+
+//     if (Auth::attempt($credentials)) {
+//         dd('Login exitoso');
+//     }
+
+//     dd('Fallo el Auth::attempt');   
+//   }

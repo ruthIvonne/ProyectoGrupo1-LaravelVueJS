@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Categoria; 
 use App\Models\Curso; 
 use Illuminate\Database\Seeder;
+use Database\Seeders\CursoUserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call(UserAdminSeeder::class);
+       // $this->call(UserAdminSeeder::class);
 
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
-        // Categoria::factory(10)->create();
+        Categoria::factory(10)->create();
 
-        // Curso::factory(10)->create();
+        Curso::factory(10)->create();
 
-        $this->call(RoleAndPermissionSeeder::class);
+        $this->call(CursoUserSeeder::class);
+
+      //  $this->call(RoleAndPermissionSeeder::class);
         
     }
 }
