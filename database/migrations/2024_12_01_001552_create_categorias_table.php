@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id();
+            $table->id('categoria_id'); // Define la clave primaria personalizada
             $table->string('nombre_categoria');
             $table->timestamps();
         });
     }
 
-    /**
+       /**
      * Reverse the migrations.
      */
     public function down(): void
