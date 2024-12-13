@@ -18,6 +18,8 @@ class Curso extends Model
         'certificados',
         'precio',
         'video_url',
+        'estado', 
+        'categoria_id', // Relación con categorías
         'user_created',
         'user_updated',
         'categoria_id',
