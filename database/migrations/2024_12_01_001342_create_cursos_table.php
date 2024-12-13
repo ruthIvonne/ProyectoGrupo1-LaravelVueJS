@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id(); // Clave primaria estándar
             $table->string('titulo',100);
             $table->string('institucion',200);
-            $table->text('plan_de_estudio',500);
+            $table->text('plan_de_estudio');
             $table->time('duracion')->nullable();
             $table->boolean('certificados');
             $table->decimal('precio',15,2);
