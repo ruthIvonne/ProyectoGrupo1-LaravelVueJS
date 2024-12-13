@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\CheckDocenteRole; 
-use App\Http\Middleware\CheckAlumnoRole; 
-
+use App\Http\Middleware\CheckAlumnoRole;
+use App\Http\Middleware\RoleMiddleware;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,6 +24,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::aliasMiddleware('checkadmin', CheckAdminRole::class);
         Route::aliasMiddleware('checkdocente', CheckDocenteRole::class);
         Route::aliasMiddleware('checkalumno', CheckAlumnoRole::class);
+        Route::aliasMiddleware('role', RoleMiddleware::class);
+        
 
     }
 

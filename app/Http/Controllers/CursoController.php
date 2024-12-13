@@ -86,6 +86,12 @@ class CursoController extends Controller
         return redirect()->route('cursos.index')->with('success', 'Curso eliminado exitosamente.');
     }
 
+    public function menuDocente()
+    {
+        $cursos = Curso::all(); 
+        return view('layouts.menuDocente', compact('cursos'));
+    }
+
     public function asignados(CursoFormRequest $request)
     {
         // $user = Auth::user(); 
@@ -102,12 +108,18 @@ class CursoController extends Controller
         //     return redirect()->route('cursos.index')->with('error', 'No tienes acceso a esta sección.');
         // }
         //return redirect()->route('cursos.index')->with('success', 'No tienes acceso a esta sección.');
-        return view('cursos.asignados', compact('cursos'));
+        return view('docentes.cursos_asignados', compact('cursos'));
     }
 
-    public function comprados($curso_id)
+    public function menuAlumno()
     {
-        //$curso = Curso::findOrFail($cursoId);
+        $cursos = Curso::all(); 
+        return view('layouts.menuAlumno', compact('cursos'));
+    }
+    public function comprados()
+    {
+        // Verifica si el curso existe
+       // $curso = Curso::findOrFail($id);;
 
         // Verificar si el alumno ya compró el curso
         // if (Auth::user()->cursosComprados->contains($curso)) {
@@ -115,11 +127,13 @@ class CursoController extends Controller
         // }
 
         // Agregar el curso a los cursos comprados del alumno
-        //Auth::user()->cursosComprados()->attach($curso);
+       // Auth::user()->cursosComprados()->attach($curso);
 
-        return redirect()->route('cursos.index')->with('success', 'No tienes acceso a esta sección.');
+       $cursos = Curso::all(); // O filtra los cursos según sea necesario.
+       return view('alumnos.cursos_comprados', compact('cursos'));
 
-        //return redirect()->route('alumnos.cursos_comprados')->with('success', 'Curso comprado exitosamente.');
+
+       // return redirect()->route('alumnos.cursos_comprados')->with('success', 'Curso comprado exitosamente.');
     }
 
 }

@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Crear Usuario**') }}</div>
 
                 <div class="card-body">
-                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                  @csrf
                     <!-- Nombre -->
                     <div class="mb-3">
@@ -57,6 +57,8 @@
                         <label for="rol" class="form-label">Rol</label>
                         <select class="form-select" id="rol" name="rol">
                             <option value="alumno" selected>Alumno</option>
+                            <option value="docente">Docente</option>
+                            <option value="administrador">Administrador</option>
                         </select>
                     </div>
 
