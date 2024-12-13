@@ -11,7 +11,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
+    // Otros registros
+    class_alias(\Darryldecode\Cart\Facades\CartFacade::class, 'Cart');
+
+
     }
 
     /**

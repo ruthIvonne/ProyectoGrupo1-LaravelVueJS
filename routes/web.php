@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
-
+use App\Http\Controllers\CartController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,4 +29,23 @@ Route::prefix('Cursos')->group(function () {
 
 });
 //Carrito (en proceso)
-Route::post('/carrito/agregar/{id}', [CartController::class, 'agregar'])->name('carrito.agregar');
+
+Route::prefix('Cart')->group(function () {
+  Route::post('/carrito/index', [CartController::class, 'index'])->name('cart.index');
+  Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+  Route::get('/cart', [CartController::class, 'cart'])->name('Cart.cart');
+  Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+  Route::delete('/cart/update', [CartController::class, 'update'])->name('cart.update');
+  Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+}); 
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

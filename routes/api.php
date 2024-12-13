@@ -36,3 +36,7 @@ Route::prefix('Cursos')->group(function () {
     Route::put('/update/{id}', [CourseController::class, 'update'])->name('Cursos.update');
     Route::delete('/{id}', [CourseController::class, 'destroy']); // Eliminar un producto
 });
+Route::prefix('Cart')->group(function () {
+    Route::get('/', [CourseController::class, 'cart']); // Obtener lista de productos
+ 
+});
