@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request)
 });
 
 /* Route::get('comments','Api\CommentController@index');  */
-Route::apiResource('comments',Api\CommentController::class);
+Route::apiResource('comments',Api\commentController::class);
 
 
 //Rutas de Cursos
