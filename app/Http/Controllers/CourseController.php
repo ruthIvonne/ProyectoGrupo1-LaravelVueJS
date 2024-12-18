@@ -10,7 +10,8 @@ use App\Models\Categoria;
 class CourseController extends Controller{   
      public function index()
     {
-        $cursos = Curso::all(); // Obtener todos los cursos
+        $cursos = Curso::paginate(10); // Obtener todos los cursos
+        $cursos = Curso::with('categoria')->get(); // Carga la relación 'categoria'
         return view('Cursos.index', compact('cursos')); // Mostrar la vista con los cursos Crud
     }
     public function catalogo()
@@ -117,17 +118,11 @@ class CourseController extends Controller{
     // Función para cambiar el estado de un curso
     public function toggleEstado($id)
     {
-        // Buscar el curso por ID
         $curso = Curso::findOrFail($id);
-
-        // Cambiar el estado de 1 a 0 o de 0 a 1
-        $curso->estado = ($curso->estado == 1) ? 0 : 1;
-
-        // Guardar el cambio
+        $curso->estado = $curso->estado === 1 ? 0 : 1;
         $curso->save();
 
-        // Redirigir con un mensaje
-        return redirect()->route('Cursos.index')->with('success', 'El estado del curso ha sido actualizado.');
+        return response()->json(['message' => 'Estado actualizado con éxito.']);
     }
 }
 

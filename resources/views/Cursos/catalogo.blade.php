@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="catalog-container my-5">
-    <h1 class="text-center mb-4 catalog-title">Catálogo de Cursos</h1>
+    <h1 class="text-center mb-4 catalog-title"><i class="bi bi-list-check"></i>
+        Catálogo de Cursos</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($cursos as $curso)
         <div class="col">

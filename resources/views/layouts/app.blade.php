@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/styleCurso.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+   
 
 
 </head>

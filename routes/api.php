@@ -40,3 +40,5 @@ Route::prefix('Cart')->group(function () {
     Route::get('/', [CourseController::class, 'cart']); // Obtener lista de productos
  
 });
+Route::get('/cursos', [CursoController::class, 'index']);
+Route::get('/cursos/{id}/toggle-estado', [CursoController::class, 'toggleEstado']);

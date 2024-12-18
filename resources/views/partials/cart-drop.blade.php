@@ -3,9 +3,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col-lg-3">
-                    <img href="/images/{{ $item->attributes->imagen }}"
-                         style="width: 50px; height: 50px;"
-                    > 
+                  
                 </div>
                 <div class="col-lg-6">
                     <b>{{$item->name}}</b>

@@ -9,13 +9,13 @@ class CartController extends Controller
     {
         $cursos = Curso::all();
         dd($cursos);
-        return view('Curso')->withTitle('E-COMMERCE STORE | SHOP')->with(['cursos' => $cursos]);
+        return view('Curso')->withTitle('Tienda Cursos Profecionales| SHOP')->with(['cursos' => $cursos]);
     }
 
     public function cart()  {
         $cartCollection = Cart::getContent();
         
-        return view('Carrito.cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
+        return view('Carrito.cart')->withTitle('Tienda Cursos Profecionales | CART')->with(['cartCollection' => $cartCollection]);;
     }
     public function add(Request $request)
     {

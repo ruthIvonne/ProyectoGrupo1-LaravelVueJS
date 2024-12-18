@@ -46,10 +46,7 @@
                 
                 @foreach($cartCollection as $item)
                     <div class="row">
-                        <img src="{{ $item->attributes->image }}"
-                        style="width: 50px; height: 50px;"
-                   >
-
+                       
                         <div class="col-lg-5">
                             <p>
                                 <b><a {{ $item->attributes->slug }}>{{ $item->name }}</a></b><br>
@@ -97,7 +94,7 @@
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                    <br><a href="Cursos/cursos/catalogo" class="btn btn-dark">Shopping</a>
+                    <br><a href="{{ route('Cursos.catalogo') }}" class="btn btn-dark">Shopping</a>
                     <a  class="btn btn-success">Comprar</a>
                 </div>
             @endif

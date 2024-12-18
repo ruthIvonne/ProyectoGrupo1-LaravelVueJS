@@ -4,8 +4,18 @@
 
 @section('content')
 <div class="container my-5">
+    
     <div class="row justify-content-center">
+        
         <div class="col-md-8">
+             <!-- Mensaje de éxito (si lo hay) -->
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}<i class="bi bi-check-circle text-success"></i>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
             <div class="card shadow-lg rounded">
                 <!-- Encabezado -->
                 <div class="card-header text-center bg-gradient-primary text-white">
@@ -42,7 +52,7 @@
                         <input type="hidden" name="price" value="{{ $curso->precio }}">
                         <input type="hidden" name="quantity" value="1">
                         <input type="hidden" name="attributes[slug]" value="{{ $curso->slug }}">
-                        <input type="hidden" name="attributes[image]" value="{{ $curso->imagen }}">
+                        <input type="hidden" name="attributes[image]" value="{{ $curso->image }}">
                         
                         <button type="submit" class="btn btn-success btn-sm">
                             <i class="bi bi-cart-plus"></i> Agregar al carrito

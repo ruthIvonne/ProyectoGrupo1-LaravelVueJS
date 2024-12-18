@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/crearUsuario',[App\Http\Controllers\UsersController::class,'create'])->name('crearUsuario');
 Route::post('/store',[App\Http\Controllers\UsersController::class,'store'])->name('storeUsuario');
 
@@ -24,8 +25,8 @@ Route::prefix('Cursos')->group(function () {
     Route::get('/cursos/edit/{id}', [CourseController::class, 'update_view'])->name('Cursos.edit');
 
     // Ruta para actualizar los datos (PUT o PATCH)
-    Route::put('/update/{id}', [CourseController::class, 'update'])->name('Cursos.update');
-    Route::get('/cursos/{id}/toggle-estado', [CourseController::class, 'toggleEstado'])->name('Cursos.toggleEstado');
+    Route::patch('/update/{id}', [CourseController::class, 'update'])->name('Cursos.update');
+    Route::get('/cursos/toggle-estado/{id}', [CourseController::class, 'toggleEstado'])->name('Cursos.toggleEstado');
 
 });
 //Carrito (en proceso)
