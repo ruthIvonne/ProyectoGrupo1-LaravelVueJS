@@ -1,6 +1,6 @@
 <!-- resources/views/Cursos/index.blade.php -->
 
-@extends('layouts.app')
+@extends('layoutsEsteban.app')
 
 @section('content')
 

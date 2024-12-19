@@ -1,4 +1,4 @@
-@extends('layouts.appCart')
+@extends('layoutsEsteban.appCart')
 
 @section('content')
     <div class="container" style="margin-top: 80px" >

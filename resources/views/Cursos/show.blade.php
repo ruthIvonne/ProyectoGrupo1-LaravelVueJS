@@ -1,6 +1,6 @@
 <!-- resources/views/dashboard/show.blade.php -->
 
-@extends('layouts.app')
+@extends('layoutsEsteban.app')
 
 @section('content')
 <div class="container my-5">

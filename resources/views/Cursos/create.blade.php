@@ -1,6 +1,6 @@
 <!-- resources/views/dashboard/create.blade.php -->
 
-@extends('layouts.app')
+@extends('layoutsEsteban.app')
 @section('content')
 <h1 class="text-center mb-4"><i class="bi bi-person-bookmark"></i>
     Crear un nuevo Curso</h1>

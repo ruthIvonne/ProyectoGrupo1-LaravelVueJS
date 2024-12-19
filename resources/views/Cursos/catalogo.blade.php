@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layoutsEsteban.app')
 
 @section('content')
 <div class="catalog-container my-5">
