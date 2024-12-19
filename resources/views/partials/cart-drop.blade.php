@@ -32,12 +32,10 @@
     </li>
     <br>
     <div class="row" style="margin: 0px;">
-        <a class="btn btn-dark btn-sm btn-block" href="{{ route('cart.index') }}">
+        <a class="btn btn-dark btn-sm btn-block" href="{{ route('Cart.cart') }}">
             CART <i class="fa fa-arrow-right"></i>
         </a>
-        <a class="btn btn-dark btn-sm btn-block" href="">
-            CHECKOUT <i class="fa fa-arrow-right"></i>
-        </a>
+     
     </div>
 @else
     <li class="list-group-item">Tu carrito esta vacio</li>

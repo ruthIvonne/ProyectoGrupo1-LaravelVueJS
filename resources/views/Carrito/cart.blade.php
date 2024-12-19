@@ -1,4 +1,4 @@
-@extends('layoutsEsteban.appCart')
+@extends('layoutsEsteban.app')
 
 @section('content')
     <div class="container" style="margin-top: 80px" >
@@ -41,7 +41,7 @@
                     <h4>{{ \Cart::getTotalQuantity()}} Producto(s) En tu carrito</h4><br>
                 @else
                     <h4>No hay Producto(s) en tu carrito</h4><br>
-                    <a href="/" class="btn btn-dark">Continue Shopping</a>
+                    <a href="Cursos.catalogo" class="btn btn-dark">Continue Shopping</a>
                 @endif
                 
                 @foreach($cartCollection as $item)
@@ -63,8 +63,9 @@
                                         <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                         <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
                                                id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
+                                       <!-- <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i class="fa fa-edit"></i></button> -->
                                     </div>
+                                    
                                 </form>
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     @csrf

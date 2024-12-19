@@ -54,7 +54,7 @@
                     @click="toggleEstadoCurso(curso.id)"
                   >
                     <i v-if="cargando === curso.id" class="spinner-border spinner-border-sm fs-6"></i>
-                    <i v-else class="bi bi-toggle-on fs-6"></i><small>Habilitar</small>
+                    <i v-else class="bi bi-toggle-on"></i><small>Habilitar</small>
                   </button>
 
                 </div>
