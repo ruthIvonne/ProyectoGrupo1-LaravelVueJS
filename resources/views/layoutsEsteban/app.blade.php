@@ -25,7 +25,7 @@
 <body>
     <div class="container">
         <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ml-auto">
             @auth
             <!-- Menú para Administrador -->
             @if(Auth::user()->rol === 'administrador')
@@ -76,7 +76,7 @@
                             </span>
                         </a>
     
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
                             <ul class="list-group" style="margin: 20px;">
                                 @include('partials.cart-drop')
                             </ul> 

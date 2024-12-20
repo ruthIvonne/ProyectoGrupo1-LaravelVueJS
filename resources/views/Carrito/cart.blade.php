@@ -89,14 +89,20 @@
                 @endif
             </div>
             @if(count($cartCollection)>0)
-                <div class="col-lg-5">
+                <div class="col-lg-5 ">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
                     <br><a href="{{ route('Cursos.catalogo') }}" class="btn btn-dark">Shopping</a>
-                    <a  class="btn btn-success">Comprar</a>
+                    
+                    <form class=" py-2" action="{{ route('compras.procesar') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Comprar</button>
+                    </form>
+                               
+                 
                 </div>
             @endif
         </div>

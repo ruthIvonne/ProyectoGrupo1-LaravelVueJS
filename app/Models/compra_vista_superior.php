@@ -16,4 +16,17 @@ class compra_vista_superior extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function detalles()
+        {
+            return $this->hasMany(compra_detalle::class, 'id_compra_superior');
+        }
+        public function usuario()
+        {
+            return $this->belongsTo(User::class, 'id_alumno_compra');
+        }
+       
+
+
+
 }

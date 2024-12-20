@@ -38,6 +38,14 @@ Route::prefix('Cart')->group(function () {
   Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
   Route::delete('/cart/update', [CartController::class, 'update'])->name('cart.update');
   Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+  //listar detalle de Compras / compras de usuario
+  Route::post('/compras/procesar', [CartController::class, 'procesar'])->name('compras.procesar');
+  Route::get('/compras/confirmacion/{id}', [CartController::class, 'confirmacion'])->name('compras.confirmacion');
+  Route::get('/perfil/compras', [CartController::class, 'listarCompras'])->name('perfil.compras');
+
+
+
+
 }); 
 
 Auth::routes();

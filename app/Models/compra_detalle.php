@@ -17,4 +17,24 @@ class compra_detalle extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function compraSuperior()
+        {
+            return $this->belongsTo(compra_vista_superior::class, 'id_compra_superior');
+        }
+        public function compra()
+        {
+            return $this->belongsTo(Compra_vista_superior::class, 'id_compra_superior');
+        }
+
+        public function curso()
+        {
+            return $this->belongsTo(Curso::class, 'id_compra_curso');
+        }
+       
+    
+      
+
+
+
 }

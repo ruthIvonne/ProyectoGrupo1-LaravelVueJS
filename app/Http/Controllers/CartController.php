@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cart;
+use App\Models\compra_detalle;
+use App\Models\compra_vista_superior;
 
 class CartController extends Controller
 {   
@@ -72,4 +74,59 @@ class CartController extends Controller
         Cart::clear();
         return redirect()->back()->with('success', 'Carrito vaciado');
     }
+
+    public function confirmacion($id)
+        {
+            $compra = compra_vista_superior::with('detalles')->findOrFail($id);
+            return view('Carrito.compraConfirmada', compact('compra'));
+        }
+    
+        public function listarCompras()
+        {
+            // Obtener las compras del usuario autenticado
+            $compras = compra_vista_superior::where('id_alumno_compra', auth()->id())
+                ->with(['detalles.curso'])
+                ->get();
+    
+            return view('Carrito.compras', compact('compras'));
+        }
+
+public function procesar(Request $request)
+    {
+        // 1. Obtener el carrito (puede venir de sesión o base de datos)
+        $carrito = session('carrito', []); // Asumimos que el carrito está en sesión.
+
+        if (empty($carrito)) {
+            return redirect()->back()->with('error', 'El carrito está vacío.');
+        }
+
+        // 2. Crear la compra superior (resumen de la compra)
+        $compraSuperior = compra_vista_superior::create([
+            'id_alumno_compra' => auth()->user()->id, // ID del alumno logueado
+            'cantidad' => count($carrito),
+        ]);
+
+        // 3. Crear detalles de la compra
+        $total = 0;
+        foreach ($carrito as $curso) {
+            compra_detalle::create([
+                'id_compra_superior' => $compraSuperior->id,
+                'id_compra_curso' => $curso['id_curso'],
+                'total' => $curso['precio'],
+            ]);
+
+            $total += $curso['precio'];
+        }
+
+        // 4. Actualizar el total en la compra superior
+        $compraSuperior->update(['total' => $total]);
+
+        // 5. Limpiar el carrito
+        session()->forget('carrito');
+
+        // 6. Redirigir con mensaje de éxito
+        return redirect()->route('Cart.compraConfirmada', ['id' => $compraSuperior->id])
+            ->with('success', 'Compra realizada con éxito.');
+    }
+   
 }

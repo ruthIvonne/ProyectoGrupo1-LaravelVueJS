@@ -32,4 +32,9 @@ class Curso extends Model
     {
         return $this->belongsTo(Categoria::class, 'categoria_id', 'categoria_id');
     }
+    public function detalles()
+{
+    return $this->hasMany(compra_detalle::class, 'id_compra_curso');
+}
+
 }

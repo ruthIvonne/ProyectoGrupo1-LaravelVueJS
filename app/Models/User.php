@@ -41,4 +41,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function compras()
+{
+    return $this->hasMany(Compra_vista_superior::class, 'id_alumno_compra');
+}
+
 }
